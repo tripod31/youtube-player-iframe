@@ -19,7 +19,7 @@ SubManager.prototype.readSub =async function(url){
 
     const lines = text.split('\r\n'); // 空行で分割
 
-    const re = new RegExp(/(\d{2}):(\d{2}):(\d{2})\.000 --> (\d{2}):(\d{2}):(\d{2})\.000/)
+    const re = new RegExp(/(\d{2}):(\d{2}):(\d{2})[\.,]000 --> (\d{2}):(\d{2}):(\d{2})[\.,]000/)
     var subtitle = null
     for (const line of lines) {
         if (line == 'WEBVTT')
