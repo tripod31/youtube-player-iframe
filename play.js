@@ -100,15 +100,25 @@ var SetuupVideo = async function () {
     const player = new YT.Player('video', {
         videoId : videoId,
         width   : "100%",
-        height  : "80%"
+        height  : "100%"
     });
 
     setInterval(() => {
         // 字幕表示
+        if (typeof player.getCurrentTime !== 'function'){
+            console.log('関数player.getCurrentTimeがありません')
+            return
+        }
         sec = player.getCurrentTime()
         texts = sm.getSub(sec)
-        text = texts.join('<br/>')
-        document.getElementById("subtitle").innerHTML = text
+        if (texts.length>0){
+            document.getElementById("subtitle").style.visibility ="visible"
+            text = texts.join('<br/>')
+            document.getElementById("subtitle").innerHTML = text
+        }else{
+            document.getElementById("subtitle").style.visibility ="hidden"
+            document.getElementById("subtitle").innerHTML = ''
+        }
     }, 500);
 }
 

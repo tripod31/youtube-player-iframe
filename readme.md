@@ -8,23 +8,23 @@ https://brasil-gospel2japanese.blogspot.com/2025/10/blog-post_22.html
 YoutubePlayerAPIを使用しています。
 
 ## ファイル
-- sub/*.vtt  
-VTT形式の字幕ファイルを置きます。文字コードはUTF-8にします。
+- sub/*.srt  
+SRT形式の字幕ファイル
 - player.html  
 本体
 - sub-table.json  
 youtubeのVIDEO_IDとsub/に置いた字幕ファイルのファイル名の対応を書いたjsonファイルです。  
 
 ## 使い方
-- HTTPサーバー上に各ファイルを置きます。
-- sub/下にVTT形式の字幕ファイルを置きます。
+- HTTPサーバー上に各ファイルを置きます。文字コードはUTF-8にします。
+- sub/下にSRT形式の字幕ファイルを置きます。
 - sub-table.jsonにyoutubeのVIDEO_IDとsub/に置いた字幕ファイルのファイル名の対応を書きます。  
 VIDEO_IDはyoutubeのURLで  
 https://www.youtube.com/watch?v=vM2A2XEm9TE  
 の場合、vM2A2XEm9TEです。
 ```
 例：
-"4DFBOuQQi1s": "Aline Barros - Autor da Vida.vtt",
+"4DFBOuQQi1s": "Aline Barros - Autor da Vida.srt",
 ```
 
 ## 見方
