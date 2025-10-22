@@ -13,10 +13,9 @@ DIV.subtitle{
     bottom: 10%;
     left: 20%;
     padding: 10px;
-    opacity: 0.7;
     visibility: hidden;
 
-    background-color: black;
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     width: 60%;
     height: 10%;
