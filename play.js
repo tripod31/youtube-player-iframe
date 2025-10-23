@@ -61,7 +61,7 @@ SubManager.prototype.getSub = function (sec) {
     return [];
 };
 
-let SetuupVideo = async function () {
+let SetupVideo = async function () {
     // url引数取得
     let uri = new URL(window.location.href);
     const param = uri.search;
@@ -123,5 +123,5 @@ let SetuupVideo = async function () {
 };
 
 async function onYouTubeIframeAPIReady() {
-    SetuupVideo();
+    SetupVideo();
 }
