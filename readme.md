@@ -5,7 +5,7 @@ youtubeを再生しながらサーバー上の字幕ファイルを表示しま�
 https://brasil-gospel2japanese.blogspot.com/  
 サンプルが見れるページ  
 https://brasil-gospel2japanese.blogspot.com/2025/10/blog-post_22.html  
-YoutubePlayerAPIを使用しています。
+YoutubeのIframePlayerAPIを使用しています。
 
 ## ファイル
 - sub/*.srt  
