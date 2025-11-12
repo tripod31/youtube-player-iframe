@@ -93,13 +93,13 @@ let SetupVideo = async function (server=null) {
         console.log(`videoId:${videoId}がテーブルにありません`);
         return;
     }
-    let subFile = subTable[videoId];
+    let subFile = encodeURIComponent(subTable[videoId]);
     document.title = subFile.split(".").slice(0, -1).join("."); // タイトル設定
     let subFileUrl = ''
     if (server == null){
         subFileUrl = "sub/" + subFile;
     }else{
-        subFileUrl= encodeURI(`https://${server}/youtube-player-iframe/sub/${subFile}`)
+        subFileUrl= `https://${server}/youtube-player-iframe/sub/${subFile}`
     }
     let sm = new SubManager();
     sm.readSub(subFileUrl);
