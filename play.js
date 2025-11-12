@@ -61,7 +61,7 @@ SubManager.prototype.getSub = function (sec) {
     return [];
 };
 
-let SetupVideo = async function () {
+let SetupVideo = async function (server=null) {
     // url引数取得
     let uri = new URL(window.location.href);
     const param = uri.search;
@@ -80,8 +80,12 @@ let SetupVideo = async function () {
     }
 
     // 字幕テーブル読み込み
-    //const jsonFileUrl = `${uri.protocol}//${uri.hostname}/youtube-player/sub-table.json`
-    const jsonFileUrl = "sub-table.json";
+    let jsonFileUrl = ''
+    if (server == null){
+        jsonFileUrl = "sub-table.json";
+    }else{
+        jsonFileUrl = `https://${server}/youtube-player-iframe/sub-table.json`
+    }
     const response = await fetch(jsonFileUrl);
     const subTable = await response.json();
 
@@ -91,9 +95,12 @@ let SetupVideo = async function () {
     }
     let subFile = subTable[videoId];
     document.title = subFile.split(".").slice(0, -1).join("."); // タイトル設定
-    let subFileUrl = "sub/" + subFile;
-    //let subFileUrl= `${uri.protocol}//${uri.hostname}/youtube-player/sub/${subFile}`
-
+    let subFileUrl = ''
+    if (server == null){
+        subFileUrl = "sub/" + subFile;
+    }else{
+        subFileUrl= encodeURI(`https://${server}/youtube-player-iframe/sub/${subFile}`)
+    }
     let sm = new SubManager();
     sm.readSub(subFileUrl);
 
@@ -123,5 +130,6 @@ let SetupVideo = async function () {
 };
 
 async function onYouTubeIframeAPIReady() {
+    //SetupVideo('cf862826.cloudfree.jp');
     SetupVideo();
 }
