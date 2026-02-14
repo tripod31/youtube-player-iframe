@@ -53,10 +53,14 @@ SubManager.prototype.readSub = async function (url) {
 
 SubManager.prototype.getSub = function (sec) {
     // 指定された秒数の字幕テキストの配列を返す
-
-    for (const subtitle of this.subtitles) {
-        if (subtitle.startSec <= sec && sec < subtitle.endSec)
+    
+    // 終了秒数と次の字幕の開始秒数が同じ場合、次の字幕を返す
+    // そのため後ろから見る
+    for (let i = this.subtitles.length - 1; i >= 0; i--) {
+        const subtitle = this.subtitles[i];
+        if (subtitle.startSec <= sec && sec <= subtitle.endSec) {
             return subtitle.texts;
+        }
     }
     return [];
 };
